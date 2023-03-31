@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sliding Puzzle</title>
+	
+    
+</head>
+<body>
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+#puzzleContainer {
+	margin: 20px auto;
+	width: 300px;
+	height: 300px;
+	border: 1px solid #ccc;
+	position: relative;
+}
+
+.puzzlePiece {
+	width: 98px;
+	height: 98px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	position: absolute;
+}
+
+#piece1 {
+	top: 0;
+	left: 0;
+}
+
+#piece2 {
+	top: 0;
+	left: 100px;
+}
+
+#piece3 {
+	top: 0;
+	right: 0;
+}
+
+#piece4 {
+	top: 100px;
+	left: 0;
+}
+
+#piece5 {
+	top: 100px;
+	left: 100px;
+}
+
+#piece6 {
+	top: 100px;
+	right: 0;
+}
+
+#piece7 {
+	bottom: 0;
+	left: 0;
+}
+
+#piece8 {
+	bottom: 0;
+	left: 100px;
+}
+
+#piece9 {
+	bottom: 0;
+	right: 0;
+}
+
+button {
+	padding: 5px 10px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+
+    </style>
+	<h1>Sliding Puzzle</h1>
+	<div id="puzzleContainer">
+		<div class="puzzlePiece" id="piece1"></div>
+		<div class="puzzlePiece" id="piece2"></div>
+		<div class="puzzlePiece" id="piece3"></div>
+		<div class="puzzlePiece" id="piece4"></div>
+		<div class="puzzlePiece" id="piece5"></div>
+		<div class="puzzlePiece" id="piece6"></div>
+		<div class="puzzlePiece" id="piece7"></div>
+		<div class="puzzlePiece" id="piece8"></div>
+		<div class="puzzlePiece" id="piece9"></div>
+	</div>
+	<button onclick="shuffle()">Shuffle</button>
+	<p id="message"></p>
+	<script>
+        var puzzlePieces = document.getElementsByClassName("puzzlePiece");
+var emptyPiece = {row: 2, col: 2};
+
+function shuffle() {
+	// Shuffle the puzzle pieces by swapping their positions
+	for (var i = 0; i < 100; i++) {
+		var randIndex1 = Math.floor(Math.random() * puzzlePieces.length);
+		var randIndex2 = Math.floor(Math.random() * puzzlePieces.length);
+		var temp = puzzlePieces[randIndex1].style.order;
+		puzzlePieces[randIndex1].style.order = puzzlePieces[randIndex2].style.order;
+		puzzlePieces[randIndex2].style.order = temp;
+	}
+
+	// Find the empty piece and store its position
+	for (var i = 0; i < puzzlePieces.length; i++) {
+		if (puzzlePieces[i].style.order == 8) {
+			emptyPiece.row = Math.floor(i / 3);
+			emptyPiece.col = i % 3;
+			break;
+		}
+	}
+}
+
+function movePiece(piece) {
+	// Get the row and column of the clicked piece
+	var row = Math.floor(piece.style.order / 3);
+	var col = piece.style.order % 3;
+
+	// Check if the clicked piece is adjacent to the empty piece
+	if ((row == emptyPiece.row && (col == emptyPiece.col - 1 || col == emptyPiece.col + 1)) ||
+		(col == emptyPiece.col && (row == emptyPiece.row - 1 || row == emptyPiece.row + 1))) {
+
+		// Swap the clicked piece with the empty piece
+		piece.style.order = emptyPiece.row * 3 + emptyPiece.col;
+		emptyPiece.row = row;
+		emptyPiece.col = col;
+
+		// Check if the puzzle is solved
+		if (isSolved()) {
+			document.getElementById("message").innerHTML = "Congratulations! You solved the puzzle!";
+		}
+	} else {
+		alert("You can't move this piece.");
+	}
+}
+
+function isSolved() {
+	// Check if all the pieces are in their correct positions
+	for (var i = 0; i < puzzlePieces.length; i++) {
+		if (puzzlePieces[i].style.order != i) {
+			return false;
+		}
+	}
+	return true;
+}
+
+// Add event listeners to the puzzle pieces
+for (var i = 0; i < puzzlePieces.length; i++) {
+	puzzlePieces[i].addEventListener("click", function() {
+		movePiece(this);
+	});
+}
+
+shuffle();
+
+    </script>
+</body>
+</html>

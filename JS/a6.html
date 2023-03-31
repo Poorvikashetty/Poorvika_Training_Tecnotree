@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Example</title>
+  </head>
+  <body>
+    <button id="myButton">Toggle background color</button>
+
+    <script>
+      // get a reference to the button and body elements
+      var button = document.getElementById("myButton");
+      var body = document.getElementsByTagName("body")[0];
+
+      // add an event listener to the button
+      button.addEventListener("click", function() {
+        // toggle the background color of the body
+        if (body.style.backgroundColor === "white") {
+          body.style.backgroundColor = "purple";
+        } else {
+          body.style.backgroundColor = "white";
+        }
+      });
+    </script>
+  </body>
+</html>

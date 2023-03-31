@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tribute to C V Raman</title>
+    <style>
+      /* CSS Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      #header {
+        color: purple;
+        text-align: center;
+        padding: 20px;
+      }
+      #header h1 {
+        margin: 0;
+      }
+      #content {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: rgb(203, 229, 237);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header">
+      <h1>Tribute to C V Raman</h1>
+    </div>
+    
+    <!-- Content -->
+    <div id="content">
+        <img src="C:\Users\krishpo\Downloads\IMG_07112021_092419_640_x_420_pixel-450x300.jpg" alt="C V Raman" id="rayanna-img" display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;">
+        <br>
+        <h2>Introduction</h2>
+        <p>Chandrasekhara Venkata Raman, also known as C.V. Raman, was an Indian physicist who made groundbreaking discoveries in the field of light scattering. He was born on November 7, 1888, in the city of Tiruchirappalli in British India.</p>
+        <button id="toggle-img-btn">Toggle Image</button>
+        
+        <h2>Early Life</h2>
+        <p>Raman received his education in India and England, and later became a professor at the University of Calcutta. In 1928, he discovered the phenomenon of <em>Raman scattering</em>, which occurs when light is scattered by molecules and results in a change in the wavelength of the light. This discovery led to the development of Raman spectroscopy, a powerful tool for analyzing the molecular composition of materials.</p>
+        
+        <h2>work</h2>
+        <p>For his work on light scattering, Raman was awarded the Nobel Prize in Physics in 1930, becoming the first Asian to receive this honor. He later served as the director of the Indian Institute of Science in Bangalore, and was also a member of the Indian parliament. Raman died on November 21, 1970, leaving behind a legacy of scientific achievement and national pride.</p>
+        
+        <h2>Legacy</h2>
+        <p>Today, we honor C.V. Raman for his contributions to science and to India. His legacy lives on through the many scientists and students who have been inspired by his work, and through the institutions he helped to establish. We are proud to pay tribute to this great Indian and to celebrate his life and achievements.</p>
+      </div>
+    
+    <!-- JavaScript -->
+  <script>
+    // Get the image element and the toggle button
+    const rayannaImg = document.getElementById('rayanna-img');
+    const toggleImgBtn = document.getElementById('toggle-img-btn');
+    
+    // Add a click event listener to the toggle button
+    toggleImgBtn.addEventListener('click', () => {
+      // Toggle the visibility of the image
+      rayannaImg.style.display = rayannaImg.style.display === 'none' ? 'block' : 'none';
+    });
+  </script>
+  </body>
+</html>

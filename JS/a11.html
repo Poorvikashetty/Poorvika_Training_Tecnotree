@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example List with Event Listener</title>
+</head>
+<body>
+
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <script>
+    const list = document.querySelector('#myList');
+    list.addEventListener('click', function(event) {
+      const clickedItem = event.target;
+      alert(`You clicked on "${clickedItem.textContent}"`);
+    });
+  </script>
+
+</body>
+</html>

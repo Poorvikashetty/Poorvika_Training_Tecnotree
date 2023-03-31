@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example List with Selection and Clear Button</title>
+  <style>
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <button id="clearButton">Clear Selection</button>
+
+  <script>
+    const list = document.querySelector('#myList');
+    const items = list.querySelectorAll('li');
+    const clearButton = document.querySelector('#clearButton');
+
+    list.addEventListener('click', function(event) {
+      const clickedItem = event.target;
+      if (clickedItem.tagName === 'LI') {
+        items.forEach(function(item) {
+          if (item === clickedItem) {
+            item.classList.add('selected');
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
+    });
+
+    clearButton.addEventListener('click', function() {
+      items.forEach(function(item) {
+        item.classList.remove('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Example</title>
+  </head>
+  <body>
+    <button id="myButton">Click me!</button>
+    <p id="myText">This is some text.</p>
+
+    <script>
+      // get references to the button and paragraph elements
+      var button = document.getElementById("myButton");
+      var text = document.getElementById("myText");
+
+      // add an event listener to the button
+      button.addEventListener("click", function() {
+        text.innerHTML = "The button was clicked!";
+      });
+    </script>
+  </body>
+</html>

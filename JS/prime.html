@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prime number</title>
+  </head>
+  <body>
+    <h1>Prime number</h1>
+    <script>
+      let a = 7;
+      let Primeno = true;
+      if (a === 1 || a === 0) {
+        Primeno = false;
+      } else {
+        for (let i = 2; i < a; i++) {
+          if (a % i === 0) {
+            Primeno = false;
+            break;
+          }
+        }
+      }
+      if (Primeno) {
+        console.log(a + " is a prime number.");
+      } else {
+        console.log(a + " is not a prime number.");
+      }
+    </script>
+  </body>
+</html>

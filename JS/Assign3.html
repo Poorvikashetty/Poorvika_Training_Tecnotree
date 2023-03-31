@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Current date</title>
+  </head>
+  <body>
+    <h1>Write a JavaScript program to get the current date.  Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy</h1>
+    <script>
+      const now = new Date();
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear().toString();
+      const formats = ['mm-dd-yyyy', 'mm/dd/yyyy', 'dd-mm-yyyy', 'dd/mm/yyyy'];
+      const randomIndex = Math.floor(Math.random() * formats.length);
+      const format = formats[randomIndex];
+      const output = format
+        .replace('mm', month)
+        .replace('dd', day)
+        .replace('yyyy', year);
+      console.log(output);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listeners Example</title>
+  <style>
+    body {
+      background-color: white;
+    }
+
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="myParagraph">This is a paragraph.</p>
+
+  <button id="myButton">Click me!</button>
+
+  <button id="toggleButton">Toggle background color</button>
+
+  <form id="myForm">
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" name="name"><br>
+
+    <label for="emailInput">Email:</label>
+    <input type="email" id="emailInput" name="email"><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <button id="clearButton">Clear Selection</button>
+
+  <script>
+    const myParagraph = document.querySelector('#myParagraph');
+    const myButton = document.querySelector('#myButton');
+    const toggleButton = document.querySelector('#toggleButton');
+    const myForm = document.querySelector('#myForm');
+    const nameInput = document.querySelector('#nameInput');
+    const emailInput = document.querySelector('#emailInput');
+    const list = document.querySelector('#myList');
+    const items = list.querySelectorAll('li');
+    const clearButton = document.querySelector('#clearButton');
+
+    myButton.addEventListener('click', function() {
+      myParagraph.textContent = 'The button was clicked!';
+    });
+
+    toggleButton.addEventListener('click', function() {
+      document.body.classList.toggle('purple');
+    });
+
+    myForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Name: ' + nameInput.value + '\nEmail: ' + emailInput.value);
+    });
+
+    list.addEventListener('click', function(event) {
+      const clickedItem = event.target;
+      if (clickedItem.tagName === 'LI') {
+        items.forEach(function(item) {
+          if (item === clickedItem) {
+            item.classList.add('selected');
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
+    });
+
+    clearButton.addEventListener('click', function() {
+      items.forEach(function(item) {
+        item.classList.remove('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>

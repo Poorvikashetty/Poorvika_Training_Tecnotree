@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rotate a string</title>
+  </head>
+  <body>
+    <h1>Write a JavaScript program to rotate the string ‘Koding && Learning' in the right direction by periodically removing one letter from the end of the string and attaching it to the front</h1>
+    <script>
+      let str = "Koding && Learning";
+      function rotateString() {
+        const lastChar = str.charAt(str.length - 1);
+        str = str.slice(0, str.length - 1);
+        str = lastChar + str;
+        console.log(str);
+      }
+      setInterval(rotateString, 1000);
+    </script>
+  </body>
+</html>

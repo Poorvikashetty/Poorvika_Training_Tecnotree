@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Task List</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+#task-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#task-input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+#task-input:focus {
+  outline: none;
+  border-bottom-color: #007bff;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+li.completed {
+  text-decoration: line-through;
+  background-color: #d9edf7;
+}
+
+li .actions {
+  display: flex;
+  align-items: center;
+}
+
+li .actions button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+li .actions button:hover {
+  background-color: #0069d9;
+}
+
+li .actions button.delete {
+  background-color: #dc3545;
+}
+
+li .actions button.delete:hover {
+  background-color: #c82333;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>My Task List</h1>
+    
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Add a task...">
+      <button type="submit">Add</button>
+    </form>
+    
+    <ul id="task-list"></ul>
+    
+    <script>
+        const form = document.querySelector('#task-form');
+const taskInput = document.querySelector('#task-input');
+const taskList = document.querySelector('#task-list');
+
+let tasks = [];
+
+function addTask(event) {
+  event.preventDefault();
+
+  const taskName = taskInput.value.trim();
+
+  if (taskName === '') {
+    alert('Please enter a task name');
+    return;
+  }
+
+  const task = {
+    id: Date.now(),
+    name: taskName,
+    completed: false
+  };
+
+  tasks.push(task);
+
+  saveTasks();
+
+  taskInput.value = '';
+
+  renderTasks();
+}
+
+function renderTasks() {
+  taskList.innerHTML = '';
+
+  for (const task of tasks) {
+    const li = document.createElement('li');
+    li.classList.add('task');
+    if (task.completed) {
+      li.classList.add('completed');
+    }
+    li.setAttribute('data-id', task.id);
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('click', toggleCompleted);
+
+    const span = document.createElement('span');
+    span.innerText = task.name;
+
+    const button = document.createElement('button');
+    button.innerText = 'Delete';
+    button.classList.add('delete');
+    button.addEventListener('click', deleteTask);
+
+    const actionsDiv = document.createElement('div');
+    actionsDiv.classList.add('actions');
+    actionsDiv.append(checkbox, span, button);
+
+    li.appendChild(actionsDiv);
+    taskList.appendChild(li);
+  }
+}
+
+function toggleCompleted(event) {
+  const checkbox = event.target;
+  const li = checkbox.parentNode.parentNode;
+  const taskId = li.getAttribute('data-id');
+  const task = tasks.find(task => task.id == taskId);
+  task.completed = checkbox.checked;
+  saveTasks();
+  li.classList.toggle('completed');
+}
+
+function deleteTask(event) {
+  const button = event.target;
+  const li = button.parentNode.parentNode;
+  const taskId = li.getAttribute('data-id');
+  tasks = tasks.filter(task => task.id != taskId);
+  saveTasks();
+  li.remove();
+}
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const savedTasks = localStorage.getItem('tasks');
+  if (savedTasks) {
+    tasks = JSON.parse(savedTasks);
+  }
+  renderTasks();
+}
+
+form.addEventListener('submit', addTask);
+
+loadTasks();
+
+    </script>
+  </body>
+</html>

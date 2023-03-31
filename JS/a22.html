@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Example</title>
+  </head>
+  <body>
+    <button id="myButton">Click me!</button>
+    <button id="myButton2">Toggle background color</button>
+    <p id="myText">This is some text.</p>
+
+    <script>
+      // get references to the buttons and body element
+      var button = document.getElementById("myButton");
+      var button2 = document.getElementById("myButton2");
+      var body = document.getElementsByTagName("body")[0];
+
+      // add an event listener to the second button
+      button2.addEventListener("click", function() {
+        // toggle the background color of the body
+        if (body.style.backgroundColor === "white") {
+          body.style.backgroundColor = "lightgray";
+        } else {
+          body.style.backgroundColor = "white";
+        }
+      });
+    </script>
+  </body>
+</html>

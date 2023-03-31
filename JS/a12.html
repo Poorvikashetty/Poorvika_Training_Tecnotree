@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example List with Selection</title>
+  <style>
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <script>
+    const list = document.querySelector('#myList');
+    const items = list.querySelectorAll('li');
+    
+    list.addEventListener('click', function(event) {
+      const clickedItem = event.target;
+      
+      // Add "selected" class to clicked item
+      clickedItem.classList.add('selected');
+      
+      // Remove "selected" class from all other items
+      items.forEach(function(item) {
+        if (item !== clickedItem) {
+          item.classList.remove('selected');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+        .calculator {
+	width: 300px;
+	background-color: #eee;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 0 0 10px #ddd;
+}
+
+.display {
+	background-color: #fff;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 5px;
+}
+
+button {
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #333;
+	font-size: 18px;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #ddd;
+}
+
+    </style>
+</head>
+<body>
+	<div class="calculator">
+		<div class="display">
+			<input type="text" name="display" id="display" readonly>
+		</div>
+		<div class="buttons">
+			<button class="operator" onclick="clearDisplay()">C</button>
+			<button class="operator" onclick="insert('/')">÷</button>
+			<button class="number" onclick="insert('7')">7</button>
+			<button class="number" onclick="insert('8')">8</button>
+			<button class="number" onclick="insert('9')">9</button>
+			<button class="operator" onclick="insert('*')">x</button>
+			<button class="number" onclick="insert('4')">4</button>
+			<button class="number" onclick="insert('5')">5</button>
+			<button class="number" onclick="insert('6')">6</button>
+			<button class="operator" onclick="insert('-')">-</button>
+			<button class="number" onclick="insert('1')">1</button>
+			<button class="number" onclick="insert('2')">2</button>
+			<button class="number" onclick="insert('3')">3</button>
+			<button class="operator" onclick="insert('+')">+</button>
+			<button class="number" onclick="insert('0')">0</button>
+			<button class="number" onclick="insert('.')">.</button>
+			<button class="operator" onclick="calculate()">=</button>
+		</div>
+	</div>
+	<script>
+        var display = document.getElementById("display");
+
+function insert(value) {
+	display.value += value;
+}
+
+function clearDisplay() {
+	display.value = "";
+}
+
+function calculate() {
+	display.value = eval(display.value);
+}
+
+    </script>
+</body>
+</html>
