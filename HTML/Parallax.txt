@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parallax Website</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.header {
+			background-image: url("header.jpg");
+			background-size: cover;
+			height: 100vh;
+			background-attachment: fixed;
+			background-position: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 48px;
+			text-shadow: 1px 1px 1px #000;
+		}
+
+		.section {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 36px;
+			text-shadow: 1px 1px 1px #000;
+			padding: 50px;
+			margin: 0;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.section1 {
+			background-image: url("section1.jpg");
+		}
+
+		.section2 {
+			background-image: url("section2.jpg");
+		}
+
+		.section3 {
+			background-image: url("section3.jpg");
+		}
+
+		.footer {
+			background-image: url("footer.jpg");
+			background-size: cover;
+			height: 100vh;
+			background-attachment: fixed;
+			background-position: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 48px;
+			text-shadow: 1px 1px 1px #000;
+		}
+
+		.section h1 {
+			margin: 0;
+			padding: 0;
+		}
+
+		.section p {
+			margin: 0;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>Welcome to Parallax Website</h1>
+	</div>
+
+	<div class="section section1">
+		<h1>Section 1</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim a ipsum laoreet pulvinar. Maecenas ut ex eu augue aliquet rutrum. Phasellus ullamcorper nulla nec mauris gravida, ut varius velit finibus. Suspendisse vel euismod elit. Nullam maximus ipsum eget elit dapibus fermentum.</p>
+	</div>
+
+	<div class="section section2">
+		<h1>Section 2</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim a ipsum laoreet pulvinar. Maecenas ut ex eu augue aliquet rutrum. Phasellus ullamcorper nulla nec mauris gravida, ut varius velit finibus. Suspendisse vel euismod elit. Nullam maximus ipsum eget elit dapibus fermentum.</p>
+	</div>
+
+	<div class="section section3">
+		<h1>Section 3</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim a ipsum laoreet pulvinar. Maecenas ut ex eu augue aliquet

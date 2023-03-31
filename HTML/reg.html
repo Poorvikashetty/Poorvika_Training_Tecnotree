@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vehicle Registration Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Style for the form */
+      form {
+        border: 1px solid #ccc;
+        background-color: #f2f2f2;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Style for form elements */
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      /* Style for submit button */
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* Style for submit button on hover */
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      /* Style for form container */
+      .container {
+        border-radius: 5px;
+        background-color: #ffffff;
+        padding: 20px;
+      }
+
+      /* Style for form header */
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* Style for error messages */
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="header">Vehicle Registration Form</h1>
+      <form action="#" method="post">
+        <label for="name">Owner's Name</label>
+        <input type="text" id="name" name="owner_name" placeholder="Enter owner's name..." required>
+        
+        <label for="vehicle_type">Vehicle Type</label>
+        <select id="vehicle_type" name="vehicle_type" required>
+          <option value="">Select vehicle type...</option>
+          <option value="Car">Car</option>
+          <option value="Bike">Bike</option>
+          <option value="Truck">Truck</option>
+          <option value="Bus">Bus</option>
+        </select>
+        
+        
+        
+        <label for="model">Model</label>
+        <input type="text" id="model" name="model" placeholder="Enter model..." required>
+        
+        <label for="engine_number">Engine Number</label>
+        <input type="text" id="engine_number" name="engine_number" placeholder="Enter engine number..." required>
+        
+        <label for="chassis_number">Chassis Number</label>
+        <input type="text" id="chassis_number" name="chassis_number" placeholder="Enter chassis number..." required>
+        
+        <label for="fuel_type">Fuel Type</label>
+        <select id="fuel_type" name="fuel_type" required>
+          <option value="">Select fuel type...</option>
+          <option value="Pet
