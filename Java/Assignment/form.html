@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Registration Form</title>
+	<style>
+		form {
+			max-width: 500px;
+			border: 1px solid #ccc;
+			background-color: #f2f2f2;
+			padding: 20px;
+			border: 1px solid #ccc;
+		}
+
+		input[type=text], input[type=email], select, textarea {
+			width: 100%;
+			margin-top: 6px;
+			margin-bottom: 16px;
+			resize: vertical;
+		}
+
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="post">
+		<h2>Student Registration Form</h2>
+
+		<label for="fname">First Name</label>
+		<input type="text" id="fname" name="firstname">
+
+		<label for="lname">Last Name</label>
+		<input type="text" id="lname" name="lastname">
+
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email">
+
+		<label for="dob">Date of Birth</label>
+		<input type="date" id="dob" name="dob" required><br><br>
+
+		<label for="gender">Gender</label>
+		<select id="gender" name="gender">
+			<option value="">Select Gender</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="address">Address</label>
+		<textarea id="address" name="address"></textarea>
+
+		<label for="course">Course</label>
+		<select id="course" name="course">
+			<option value="">Select Course</option>
+			<option value="btech">B.Tech</option>
+			<option value="mtech">M.Tech</option>
+		</select>
+		<label for="hobbies">Hobbies</label>
+		<br>
+		<input type="checkbox" id="reading" name="hobbies" value="reading">
+		<label for="reading">Reading</label><br>
+		<input type="checkbox" id="swiming" name="hobbies" value="swiming">
+		<label for="swiming">swiming</label><br>
+		<input type="checkbox" id="singing" name="hobbies" value="singing">
+		<label for="singing">singing</label><br>
+		<input type="submit" value="Submit">
+		<input type="submit" value="EXIT">
+	</form>
+</body>
+</html>
