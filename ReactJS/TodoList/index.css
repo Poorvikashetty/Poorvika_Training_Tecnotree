@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align:center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.btn{
+  padding:8px;
+  margin-top:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  border:none;
+  background-image: radial-gradient(azure,brown);
+  width:100px;
+  box-shadow: 0 4px grey;
+}
+
+input{
+  padding:10px;
+  border-radius:30px;
+  margin-top:200px;
+}
+form{
+  background-image:radial-gradient(white,rgb(113, 202, 232));
+  width:500px;
+  margin:0 auto;
+  border-radius:30px;
+  float:right;
+  margin-left:20px;
+  margin-right:75px;
+  height:500px;
+  
+  
+}
+
+img{
+  float:left;
+  width:500px;
+  height:500px;
+}
+
+.btn1{
+  padding:5px;
+  margin-right:5px;
+}
+
+.btn:active{
+  border-radius:15px;
+  border:none;
+  box-shadow: 0 4px grey;
+  background-image: radial-gradient(brown,azure);
+  transform: translateY(7px);
+}
+
+.task{
+  border-style: groove;
+  border-color:brown;
+  width:150px;
+  margin-left:500px;
+  margin-bottom:8px;
+
+}

@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('current.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.img{
+  float:right;
+  height:500px;
+  width:500px;
+  box-shadow: 0 6px 6px 6px grey;
+  margin-top:50px;
+  margin-right:50px;
+  display: table;
+  animation:fadeIn 5s;
+ 
+}
+
+.h1{
+   float:left;
+   margin-top: 150px;
+   margin-left:200px;
+   font-size: 40px;
+   color:azure;
+   font-family: 'Courier New', Courier, monospace;
+   display:flex;
+   overflow: hidden;
+   white-space: nowrap;
+   width: 0;
+   animation:typing;
+   animation-duration: 2s;
+   animation-timing-function: steps(17,end);
+   animation-fill-mode:forwards;
+      
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.h2,p {
+  position:absolute;
+  margin-top:600px;
+  text-align: center;
+  color: aliceblue;
+  background-color: black;
+}
+p{
+  
+  line-height: 30px;
+  
+}
+
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 400px }
+}
+
+
+
