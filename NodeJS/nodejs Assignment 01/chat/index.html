@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Real-time chat app</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div id="room-form">
+      <input type="text" id="room-input" placeholder="Enter room name">
+      <button id="join-button">Join room</button>
+    </div>
+
+    <div id="chat-form" style="display: none">
+      <input type="text" id="message-input" placeholder="Enter message">
+      <button id="send-button">Send message</button>
+    </div>
+
+    <ul id="message-list"></ul>
+
+    <script>
+      const socket = io();
+
+      const roomForm = document.getElementById('room-form');
+      const joinButton = document.getElementById('join-button');
+      const chatForm = document.getElementById('chat-form');
+      const messageInput = document.getElementById('message-input');
+      const sendButton = document.getElementById('send-button');
+      const messageList = document.getElementById('message-list');
+
+      joinButton.addEventListener('click', () => {
+        const room = document.getElementById('room-input').value;
+        socket.emit('joinRoom', room);
+        roomForm.style.display = 'none';
+        chatForm.style.display = 'block';
+      });
+
+      sendButton.addEventListener('click', () => {
+        const message = messageInput.value;
+        const room = document.getElementById('room-input').value;
+        const data = {
+          room:room,
+message: message,
+};
+socket.emit('sendMessage', data);
+messageInput.value = '';
+});
+socket.on('newMessage', (data) => {
+    const li = document.createElement('li');
+    li.textContent = data.message;
+    messageList.appendChild(li);
+  });
+</script>
+</body>
+</html>
+
