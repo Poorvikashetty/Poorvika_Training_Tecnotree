@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insurance Policy Creation Form</title>
+    <h1>Insurance Management System</h1>
+	<style>
+		body {
+  background-color: #f7f7f7;
+  font-family: "Roboto", sans-serif;
+  max-width: 600mm;
+}
+
+h1 {
+  color: #2d2d2d;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 50px auto 20px;
+  text-align: center;
+}
+
+form {
+  background-color: #e2eab5;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  padding: 40px;
+}
+button {
+  background-color: #0084ff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+	transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background-color: #2d4278;
+}
+
+label {
+  color: #555;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #2d2d2d;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+#policy-list {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.policy-item {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.policy-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.policy-item p {
+  color: #2d2d2d;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.policy-item span {
+  color: #777;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+
+	</style>
+</head>
+<body>
+	<form id="policy-form">
+	  <label for="policy-name">Policy Name:</label>
+	  <select id="policy-name" name="policy-name" required>
+		<option value="">Select Policy Name</option>
+		<option value="policy1">Policy 1</option>
+		<option value="policy2">Policy 2</option>
+		<option value="policy3">Policy 3</option>
+	  </select>
+  
+	  <label for="policy-type">Policy Type:</label>
+	  <select id="policy-type" name="policy-type" required>
+		<option value="">Select Policy Type</option>
+		<option value="auto">Auto</option>
+		<option value="home">Home</option>
+		<option value="health">Health</option>
+	  </select>
+  
+	  <label for="policy-duration">Policy Duration (in months):</label>
+	  <select id="policy-duration" name="policy-duration">
+		<option value="">Select Duration</option>
+		<option value="12">1 Year</option>
+		<option value="24">2 Years</option>
+		<option value="36">3 Years</option>
+		<option value="48">4 Years</option>
+		<option value="60">5 Years</option>
+	  </select>
+  
+	  <label for="policy-amount">Policy Amount:</label>
+	  <select id="policy-amount" name="policy-amount">
+		<option value="">Select Amount</option>
+		<option value="10000">10,000</option>
+		<option value="25000">25,000</option>
+		<option value="50000">50,000</option>
+		<option value="100000">1,00,000</option>
+		<option value="250000">2,50,000</option>
+	  </select>
+  
+	  <button type="submit">Create Policy</button>
+	</form>
+  
+	<div id="success-message" style="display: none;">
+	  <p>Policy created successfully!</p>
+	</div>
+  
+	<div id="error-message" style="display: none;"></div>
+  
+	<div>
+	  <button id="sort-button">Sort by Amount</button>
+	  <button id="filter-auto-button">Filter Auto Policies</button>
+	  <button id="filter-home-button">Filter Home Policies</button>
+	  <button id="filter-health-button">Filter Health Policies</button>
+	 
+	</div>
+  
+	<div id="policy-list"></div>
+  
+	<script>
+	  const form = document.getElementById("policy-form");
+const successMessage = document.getElementById("success-message");
+const errorMessage = document.getElementById("error-message");
+const policyList = document.getElementById("policy-list");
+const sortButton = document.getElementById("sort-button");
+const filterAutoButton = document.getElementById("filter-auto-button");
+const filterHomeButton = document.getElementById("filter-home-button");
+const filterHealthButton = document.getElementById("filter-health-button");
+
+let policies = JSON.parse(localStorage.getItem("policies")) || [];
+
+filterAutoButton.addEventListener("click", function() {
+  filterPolicies("auto");
+});
+
+filterHomeButton.addEventListener("click", function() {
+  filterPolicies("home");
+});
+
+filterHealthButton.addEventListener("click", function() {
+  filterPolicies("health");
+});
+
+function filterPolicies(type) {
+  let filteredPolicies = policies.filter(function(policy) {
+    return policy.type === type;
+  });
+
+  let policyHTML = "";
+  for (let i = 0; i < filteredPolicies.length; i++) {
+    policyHTML += "<div class='policy'>";
+    policyHTML += "<h2>" + filteredPolicies[i].name + "</h2>";
+    policyHTML += "<p>Type: " + filteredPolicies[i].type + "</p>";
+    policyHTML += "<p>Duration: " + filteredPolicies[i].duration + " months</p>";
+    policyHTML += "<p>Amount: $" + filteredPolicies[i].amount + "</p>";
+    policyHTML += "<button onclick='removePolicy(" + policies.indexOf(filteredPolicies[i]) + ")'>Remove Policy</button>";
+    policyHTML += "</div>";
+  }
+  policyList.innerHTML = policyHTML;
+}
+
+function displayPolicies() {
+  policyList.innerHTML = "";
+  for (let i = 0; i < policies.length; i++) {
+    const policy = policies[i];
+    const policyElement = document.createElement("div");
+    policyElement.innerHTML = `
+      <p>Name: ${policy.name}</p>
+      <p>Type: ${policy.type}</p>
+      <p>Duration: ${policy.duration} months</p>
+      <p>Amount: $${policy.amount}</p>
+      <button class="delete-button" data-index="${i}">Delete</button>
+    `;
+    policyList.appendChild(policyElement);
+  }
+}
+
+function sortPoliciesByAmount() {
+  policies.sort(function(a, b) {
+    return b.amount - a.amount;
+  });
+  displayPolicies();
+}
+
+displayPolicies();
+
+sortButton.addEventListener("click", sortPoliciesByAmount);
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const name = document.getElementById("policy-name").value;
+  const type = document.getElementById("policy-type").value;
+  const duration = document.getElementById("policy-duration").value;
+  const amount = document.getElementById("policy-amount").value;
+
+  if (name === "" || type === "" || duration === "" || amount === "") {
+    errorMessage.textContent = "Please fill in all fields.";
+    errorMessage.style.display = "block";
+    successMessage.style.display = "none";
+  } else if (duration < 1 || amount < 1) {
+    errorMessage.textContent = "Duration and amount must be greater than zero.";
+    errorMessage.style.display = "block";
+    successMessage.style.display = "none";
+  } else {
+    const policy = { name, type, duration, amount };
+    policies.push(policy);
+    localStorage.setItem("policies", JSON.stringify(policies));
+    successMessage.style.display = "block";
+    errorMessage.style.display = "none";
+    displayPolicies();
+    form.reset();
+  }
+});
+
+policyList.addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent the default link behavior
+  if (event.target.tagName === "A") { // Check if the clicked element is a link
+    let policyId = event.target.dataset.policyId; // Get the policy ID from the data attribute
+    let policy = policies.find(policy => policy.id === policyId); // Find the policy object with the corresponding ID
+    policyContent.innerHTML = `<h2>${policy.title}</h2><p>${policy.content}</p>`; // Display the policy title and content
+  }
+});
+
+ 
+
+	</script>
+  </body>
+  

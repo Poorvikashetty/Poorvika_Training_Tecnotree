@@ -1,0 +1,41 @@
+body {
+	padding: 100px;
+	
+}
+	
+.submit-area {
+	border-radius: 10px;
+	padding: 40px;
+	box-shadow: 5px 5px 10px gray;
+	margin-top: 50px;
+}
+
+#transaction-area {
+	display: none;
+}
+.status{
+    margin: 0 20px;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+.deposit {
+	background-color: rgb(17, 97, 100);
+}
+.withdraw {
+	background-color: rgb(119, 21, 126);
+}
+.balance {
+	background-color: rgb(14, 91, 11);
+}
+#login-area{
+	background-image: url('./img1.gif');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#transaction-area{
+	background-image: url('./img3.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
